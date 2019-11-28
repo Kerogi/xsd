@@ -567,6 +567,15 @@ namespace xsd
         typedef std::ptrdiff_t difference_type;
       };
 #endif
+      template<class T>
+      struct wrapper {
+        T& val;
+        //implicit conversion
+        operator const T& () const { return val; }
+        operator T& () { return val; }
+        operator const T* () const { return &val; }
+        operator T* () { return &val; }
+      };
 
       // Iterator adapter for complex types. It expects I to point to
       // a smart pointer-like object that has operator*() that returns
@@ -613,10 +622,10 @@ namespace xsd
       public:
         // Forward iterator requirements.
         //
-        reference
+        wrapper<T>
         operator* () const
         {
-          return static_cast<reference> (**i_);
+          return { static_cast<reference> (**i_) };
         }
 
         pointer

@@ -33,7 +33,7 @@ namespace xsd
       template <typename S>
       inline simple_type<B>::
       simple_type (istream<S>& s, flags f, container* c)
-          : type (s, f, c)
+          : B (s, f, c)
       {
       }
 
@@ -68,7 +68,7 @@ namespace xsd
           while (size--)
           {
             std::auto_ptr<T> p (new T (s, f, c));
-            push_back (p);
+            sequence<T, false>::push_back (p);
           }
         }
       }
@@ -91,7 +91,7 @@ namespace xsd
           {
             T x;
             s >> x;
-            push_back (x);
+            this->push_back (x);
           }
         }
       }

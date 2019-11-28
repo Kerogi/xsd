@@ -35,7 +35,7 @@ namespace xsd
       //
       //
       template <typename T, typename C, schema_type::value ST>
-      class list<T, C, ST, false>: public sequence<T>
+      class list<T, C, ST, false>: public sequence<T, false>
       {
       public:
         explicit
@@ -84,7 +84,7 @@ namespace xsd
       //
       //
       template <typename T, typename C, schema_type::value ST>
-      class list<T, C, ST, true>: public sequence<T>
+      class list<T, C, ST, true>: public sequence<T, true>
       {
       public:
         explicit

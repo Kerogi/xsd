@@ -65,12 +65,31 @@ namespace xsd
         for (typename list<T, C, ST, fund>::const_iterator
                i (x.begin ()), e (x.end ()); i != e; ++i)
         {
-          s << *i;
+          s << static_cast<T>(*i);
         }
 
         return s;
       }
 
+      // list
+      //
+      template <typename S,
+                typename T,
+                typename C,
+                schema_type::value ST>
+        ostream<S>&
+        operator<< (ostream<S>& s, const list<T, C, ST, true>& x)
+      {
+        s << ostream_common::as_size<std::size_t>(x.size());
+
+        for (typename list<T, C, ST, true>::const_iterator
+          i(x.begin()), e(x.end()); i != e; ++i)
+        {
+          s << *i;
+        }
+
+        return s;
+      }
 
       // Insertion operators for built-in types.
       //

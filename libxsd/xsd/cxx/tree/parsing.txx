@@ -299,7 +299,7 @@ namespace xsd
 
           if (j != basic_string<C>::npos)
           {
-            push_back (
+            sequence<T, true>::push_back (
               traits<T, C, ST>::create (
                 basic_string<C> (data + i, j - i), parent, 0, 0));
 
@@ -309,7 +309,7 @@ namespace xsd
           {
             // Last element.
             //
-            push_back (
+            sequence<T, true>::push_back (
               traits<T, C, ST>::create (
                 basic_string<C> (data + i, size - i), parent, 0, 0));
 

@@ -68,6 +68,22 @@ namespace xsd
           if (i != b)
             os << C (' ');
 
+          os << static_cast<T>(*i);
+        }
+
+        return os;
+      }
+
+      template <typename C, typename T, schema_type::value ST>
+      std::basic_ostream<C>&
+        operator<< (std::basic_ostream<C>& os, const list<T, C, ST, true>& v)
+      {
+        for (typename list<T, C, ST, true>::const_iterator
+          b(v.begin()), e(v.end()), i(b); i != e; ++i)
+        {
+          if (i != b)
+            os << C(' ');
+
           os << *i;
         }
 

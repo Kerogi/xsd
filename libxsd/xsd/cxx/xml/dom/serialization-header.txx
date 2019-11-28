@@ -178,7 +178,7 @@ namespace xsd
               atts.push_back (a);
             }
 
-            for (std::vector<DOMAttr*>::iterator i (atts.begin ()),
+            for (typename std::vector<DOMAttr*>::iterator i (atts.begin ()),
                    end (atts.end ()); i != end; ++i)
             {
               e.removeAttributeNode (*i);
